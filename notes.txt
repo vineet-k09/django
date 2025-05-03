@@ -1,0 +1,12 @@
+BootStrap colors - 
+primary blue
+secondary grey
+danger red
+warning yellow
+success green
+info skyblue
+dark black
+light white
+
+text-primary
+btn-info
