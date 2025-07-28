@@ -103,3 +103,30 @@ from old mysql files and stuff
 python -m pip install mysqlclient
 
 (env) PS E:\Saturdays\Django\projectOne> python manage.py makemigrations
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+so for forms here what we used is model forms kinda thing in the forms.py which gives us forms.save() method and using user.save() we save the data in MySQL
+
+
+login page use a normal form idk why
+
+
+check forms.py for main logic besides 
+def LoginPage(request):
+    form=LoginForm(request.POST)
+    if request.method=="POST":
+        form=LoginForm(request.POST)
+        if form.is_valid():
+            un = form.cleaned_data['username']
+            pwd = form.cleaned_data['password']
+            user = authenticate(request, username=un,password=pwd)
+            if user is not None:
+                login(request,user)
+                messages.success(request, 'Login Succesful')
+                return redirect('dashboardPage')
+            else:
+                messages.warning(request, 'Login UnSuccesful')
+                return render(request,'login.html',{'form':form})  
+        else:
+            return render(request,'login.html',{'form':form})
+    return render(request, 'login.html', {'form':form})

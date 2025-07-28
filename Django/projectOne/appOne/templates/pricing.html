@@ -1,68 +1,50 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div>
-        <h5 class="text-muted text-center">Pricing</h5>
-        <h1 class="text-center">Easily organize your work. Start free.</h1>
-        <h5 class="text-muted text-center">Access our features. No credit card required.</h5>
-    
-        <div class="row d-flex justify-content-center">
-                <div class="col-3 m-3 card">
-                    <div class="card-header">
-                        <h5>Personal</h5>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-title">For individuals and small teams looking to manage their tasks.</p>
-                        <p class="card-text"><span class="fw-bold">US$0</span> <br /> Free forever</p>
-                        <a href="#" class="btn btn-primary mb-2">Get started</a>
-        
-                        <p class="card-text">Manage task and personal to-dos:</p>
-                        <ul>
-                            <li>Unlimited tasks</li>
-                            <li>Unlimited tasks</li>
-                            <li>Basic search filters</li>
-                            <li>List view projects</li>
-                        </ul>
-                    </div>
+<div class="container py-5">
+    <h5 class="text-muted text-center mb-2">Pricing</h5>
+    <h1 class="text-center fw-bold mb-3">Easily organize your work. Start free.</h1>
+    <h5 class="text-muted text-center mb-5">Access our features. No credit card required.</h5>
+
+    <div class="row justify-content-center">
+        {% for item in items %}
+        <div class="col-md-4 col-sm-6 col-10 mb-4">
+            <div class="card h-100 shadow-sm border-0 pricing-card hover-shadow">
+                <div class="card-header text-center bg-transparent">
+                    <h5 class="fw-semibold">{{ item.title }}</h5>
                 </div>
-        
-                <div class="col-3 m-3 card">
-                    <div class="card-header">
-                        <h5>Starter</h5>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-title">For growing teams that need to track their projects' progress and hit deadlines.</p>
-                        <p class="card-text"><span class="fw-bold">US$6.92</span> <strike class="text-muted">US$10.99</strike></p>
-                        <a href="#" class="btn btn-primary mb-2">Get started</a>
-        
-                        <p class="card-text">Manage task and personal to-dos:</p>
-                        <ul>
-                            <li>Unlimited tasks</li>
-                            <li>Unlimited tasks</li>
-                            <li>Basic search filters</li>
-                            <li>List view projects</li>
-                        </ul>
-                    </div>
+                <div class="card-body text-center">
+                    <p class="card-title">{{ item.desc }}</p>
+                    <p class="card-text">
+                        <span class="fw-bold fs-4">{{ item.price }}</span>
+                        {% if item.original %}
+                            <br><strike class="text-muted">{{ item.original }}</strike>
+                        {% endif %}
+                    </p>
+
+                    <a href="#" class="btn btn-outline-primary mt-2 mb-3 px-4">Get started</a>
+
+                    <p class="card-text text-start fw-semibold mt-3">Features:</p>
+                    <ul class="text-start px-3 small">
+                        {% for feat in item.features %}
+                            <li>{{ feat }}</li>
+                        {% endfor %}
+                    </ul>
                 </div>
-        
-                <div class="col-3 m-3 card">
-                    <div class="card-header">
-                        <h5>Advanced</h5>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-title">For companies that need to manage a portfolio of work and goals across departments.</p>
-                        <p class="card-text"><span class="fw-bold">US$15.74</span> <strike class="text-muted">US$24.99</strike></p>
-                        <a href="#" class="btn btn-primary mb-2">Get started</a>
-        
-                        <p class="card-text">Manage task and personal to-dos:</p>
-                        <ul>
-                            <li>Unlimited tasks</li>
-                            <li>Unlimited tasks</li>
-                            <li>Basic search filters</li>
-                            <li>List view projects</li>
-                        </ul>
-                    </div>
-                </div>
+            </div>
         </div>
+        {% endfor %}
     </div>
+</div>
+
+<style>
+    .pricing-card {
+        transition: all 0.3s ease-in-out;
+        border-radius: 12px;
+    }
+    .pricing-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+</style>
 {% endblock %}

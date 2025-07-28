@@ -59,7 +59,31 @@ def LoginPage(request):
     return render(request, 'login.html', {'form':form})
 
 def PricingPage(request):
-    return render(request,"pricing.html")
+    
+    items = [
+        {
+            "title": "Personal",
+            "desc": "For individuals and small teams looking to manage their tasks.",
+            "price": "US$0",
+            "original": None,
+            "features": ["Unlimited tasks", "Basic search filters", "List view projects", "Personal to-dos"]
+        },
+        {
+            "title": "Starter",
+            "desc": "For growing teams that need to track their projects' progress and hit deadlines.",
+            "price": "US$6.92",
+            "original": "US$10.99",
+            "features": ["Unlimited tasks", "Advanced filters", "Board view", "Team collaboration"]
+        },
+        {
+            "title": "Advanced",
+            "desc": "For companies that need to manage a portfolio of work and goals across departments.",
+            "price": "US$15.74",
+            "original": "US$24.99",
+            "features": ["Unlimited tasks", "Custom dashboards", "Priority support", "Integrations"]
+        },
+    ]
+    return render(request,"pricing.html",{"items":items})
 
 
 items=[
