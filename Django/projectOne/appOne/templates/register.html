@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="shadow-lg bg-light border border-warning rounded-3 p-3 mx-auto my-5"
+        style="max-width: 23%;min-height:60%">
+        <h1 class="text-center my-4" style="font-family:Verdana;">Sign Up</h1>
+        <div class="container">
+            {% comment %} validating registeration -- read the message and print them {% endcomment %}
+            
+            {% include "./includes/messages.html" %}
+            <form method="POST" novalidate>
+                {% csrf_token %} 
+                {{form.as_p}}
+                <div class="d-grid gap-2 col-4 mx-auto">
+                    <button class="btn btn-success" type="submit">Register</button>
+                </div>
+            </form>
+            <div class="my-3">
+                <div>Have an account?
+                    <a href="/login" class="text-decoration-none fw-bold">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

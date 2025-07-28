@@ -1,0 +1,29 @@
+django/project/
+
+npm init -y
+npm install -D tailwindcss postcss autoprefixer
+
+✅ 3. Create the Tailwind input file:
+bash
+Copy
+Edit
+mkdir -p assets/css
+touch assets/css/input.css
+
+
+
+create file tailwind.config -->
+
+module.exports = {
+    content: [
+        './appOne/templates/**/*.html',    // your actual HTML files
+        './projectOne/templates/**/*.html' // if you later add shared templates
+    ],
+    theme: {
+        extend: {},
+    },
+    plugins: [],
+};
+
+
+New-Item -Path "./postcss.config.js" -ItemType "File"
