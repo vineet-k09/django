@@ -10,14 +10,17 @@ def RegisterPage(request):
         if form.is_valid():
             user=form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
+            user.save()
             messages.success(request, 'Registration Complete - head to Login')
             return redirect('loginPage')
+        else:
+            messages.warning(request,'yeah not registered')
     return render(request,"register.html",{'form':form})
 
-def HomePage(request):
+def HomePageContent(request):
     return render(request,"base.html")
 
-def HomePageContent(request):
+def HomePage(request):
     return render(request,"homepage.html")
 
 def DashBoardPage(request):
@@ -46,10 +49,11 @@ def LoginPage(request):
             user = authenticate(request, username=un,password=pwd)
             if user is not None:
                 login(request,user)
-                messages.success(request, 'Registration Complete - head to Login')
+                messages.success(request, 'Login Succesful')
                 return redirect('dashboardPage')
             else:
-              return redirect('loginPage')    
+                messages.warning(request, 'Login UnSuccesful')
+                return render(request,'login.html',{'form':form})  
         else:
             return render(request,'login.html',{'form':form})
     return render(request, 'login.html', {'form':form})
