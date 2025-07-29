@@ -130,3 +130,18 @@ def LoginPage(request):
         else:
             return render(request,'login.html',{'form':form})
     return render(request, 'login.html', {'form':form})
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+middleware.py
+
+to prevent unauthourized access:
+
+ if user.is_authenticated and path in [reverse('login'), reverse('register')]:
+            return redirect('dashboard')
+
+        # Redirect unauthenticated users away from protected pages
+        protected_paths = [reverse('dashboard')] 
+        if not user.is_authenticated and path in protected_paths:
+            return redirect('home')
+
+        return self.get_response(request)
