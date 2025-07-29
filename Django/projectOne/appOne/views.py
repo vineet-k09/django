@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, logout, login
 from django.contrib import messages
 from .forms import ContactForm, RegisterForm, LoginForm
+from .models import TaskBoard
+from .serializers import TaskSerializer
+from rest_framework import viewsets
 
 def RegisterPage(request):
     form = RegisterForm()
@@ -85,18 +88,9 @@ def PricingPage(request):
     ]
     return render(request,"pricing.html",{"items":items})
 
-
-items=[
-    {"title":"Personal", "des":"For individuals and small teams looking to manage their tasks.", },
-    {"title":"Starter"},
-    {"title":"Advanced"}
-]
-
-users=[
-    {"name":"Eeksha", "age": 21},
-    {"name":"Prajwal", "age": 56},
-    {"name":"ABC", "age": 30}
-]
+class TaskView(viewsets.ModelViewSet):
+    queryset = TaskBoard.objects.all()
+    serializer_class = TaskSerializer
 
 def LogOutPage(request):
     logout(request)

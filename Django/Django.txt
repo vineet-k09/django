@@ -145,3 +145,20 @@ to prevent unauthourized access:
             return redirect('home')
 
         return self.get_response(request)
+
+~~~~~~~~~~~~~~~~``
+pip install djangorestframework
+
+add rest_framwork to application list
+
+in models.py 
+make a model -> taskboard {taskName, taskDescription}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
+from rest_framework import serializers
+from .models import TaskBoard
+
+class TaskSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TaskBoard
+        fields = '_all_'

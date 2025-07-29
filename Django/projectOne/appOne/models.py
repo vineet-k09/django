@@ -11,3 +11,7 @@ class Student(models.Model):
 
     def get_absolute_url(self):
         return reverse("_detail", kwargs={"pk": self.pk})
+
+class TaskBoard(models.Model):
+    taskName = models.CharField(max_length=100)
+    taskDescription = models.TextField(max_length=100)

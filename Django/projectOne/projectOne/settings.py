@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'appOne'
+    'rest_framework',
+    'appOne',
 ]
 
 MIDDLEWARE = [
@@ -76,7 +77,6 @@ WSGI_APPLICATION = 'projectOne.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'projectOne',
         'USER': 'root',
@@ -122,7 +122,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
-# ASSETS_URL = 'assets/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
