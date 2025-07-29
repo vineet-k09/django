@@ -1,5 +1,3 @@
-# myapp/middleware.py
-
 from django.shortcuts import redirect
 from django.urls import reverse
 
@@ -12,11 +10,11 @@ class AuthRedirectMiddleware:
         path = request.path
 
         # Redirect authenticated users away from login/register
-        if user.is_authenticated and path in [reverse('login'), reverse('register')]:
-            return redirect('dashboard')
+        if user.is_authenticated and path in [reverse('loginPage'), reverse('registerPage')]:
+            return redirect('dashboardPage')
 
         # Redirect unauthenticated users away from protected pages
-        protected_paths = [reverse('dashboard')] 
+        protected_paths = [reverse('dashboardPage'), reverse('logoutPage')] 
         if not user.is_authenticated and path in protected_paths:
             return redirect('home')
 

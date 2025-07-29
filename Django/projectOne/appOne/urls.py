@@ -10,6 +10,6 @@ urlpatterns = [
     path('login', views.LoginPage, name="loginPage"),
     path('logout', views.LogOutPage, name="logoutPage"),
     path('dashboard', views.DashBoardPage, name="dashboardPage"),
-    path('', views.HomePage),
-    path('', views.HomePageContent)
+    path('', views.HomePage, name='home'),
+    path('', views.HomePageContent, name='home'),
 ]
