@@ -4,4 +4,4 @@ from .models import TaskBoard
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = TaskBoard
-        fields = '_all_'
+        fields = '__all__'
